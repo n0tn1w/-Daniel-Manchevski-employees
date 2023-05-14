@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <span class="mt-5"><h1> Employees Data in a cool table </h1></span>
+  </div>
+  <div class="row mt-3">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">EmpID</th>
+        <th scope="col">ProjectID</th>
+        <th scope="col">DateFrom</th>
+        <th scope="col">DateTo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="!employees || employees.length === 0">
+        <tr class="text-center">
+          <td colspan="5">
+            <span>Empty table :(</span>
+          </td>
+        </tr>
+      </ng-container>
+
+      <ng-container *ngFor="let employee of employees;index as i">
+        <tr>
+          <th scope="row">{{i+1}}</th>
+          <td>{{employee.empID}}</td>
+          <td>{{employee.projectID}}</td>
+          <td>{{employee.dateFrom | date: 'MMM dd, yyyy'}}</td>
+          <td>{{employee.dateTo | date: 'MMM dd, yyyy'}}</td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div class="row mt-3">
+    <div *ngIf="!!bestPair" class="card">
+      <div class="card-body">
+        Employees: <strong>{{bestPair.empID1}}</strong> and <strong>{{bestPair.empID2}}</strong><br>
+        While working on <strong>{{bestPair.projectID}}</strong>
+      </div>
+    </div>
+  </div>
+</div>
